@@ -12,7 +12,7 @@
             </div>
             <h1 class="portal-title">UrbanEd</h1>
             <p class="portal-desc">
-                Create your account to access your personalized academic and financial profile.
+                Log in your account to access your personalized academic and financial profile.
             </p>
         </div>
 
