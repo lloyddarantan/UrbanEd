@@ -1,0 +1,262 @@
+/* ---------- Base Styles ---------- */
+* {
+  box-sizing: border-box;
+}
+
+/* from the schoalrship css */
+.page-header {
+  margin-left: 112px;
+  margin-right: 112px;
+}
+
+.page-feature {
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+  margin: 40px 0;
+}
+
+.page-divider {
+  border: none;
+  height: 4px;
+  background-color:#3772D8;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.nav-header {
+  font-size: 14px;
+  line-height: 1.21428571;
+  font-family: "Raleway", "Lato", "Gill Sans", "Gill Sans MT", Calibri, Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: .75px;
+  word-spacing: 1.25px;
+  text-transform: uppercase;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-header a {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-header .arrow {
+  color: #222;
+  margin: 0 10px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.blue-text {
+  color: #63aaff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #1f2937;
+}
+
+a {
+  text-decoration: none;
+  color: #6b7280;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #3b82f6;
+}
+
+.current {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-btn:hover {
+  color: #0056b3;
+}
+
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+nav {
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 0px 50px 50px 50px;
+
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* ---------- Card Styles ---------- */
+.card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+}
+
+.card h1, .card h2 {
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+/* ---------- Input Styles ---------- */
+label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #111827;
+  cursor: not-allowed;
+  margin-bottom: 12px;
+}
+
+.input-field:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+}
+
+textarea {
+  resize: none;
+}
+
+/* ---------- Button ---------- */
+.btn-container {
+  margin-top: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #dc2626;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background-color: #b91c1c;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Avatar Section ---------- */
+.avatar {
+  width: 150px;
+  height: 150px;
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}
+
+.avatar svg {
+  width: 80px;
+  height: 80px;
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-info .name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.profile-info .details {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* ---------- Status Lists ---------- */
+dl {
+  margin: 0;
+}
+
+dt {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+dd {
+  font-weight: 600;
+  color: #111827;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.green {
+  color: #16a34a;
+}
+
+.note {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-top: 8px;
+}

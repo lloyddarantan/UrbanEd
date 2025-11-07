@@ -1,7 +1,10 @@
+<?php
+session_start();
+?>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel ="stylesheet" href="assets/index/index.css">   
+        <link rel ="stylesheet" href="assets/css/index/index.css">   
     </head>
     <body>
         <!-- nav -->
@@ -30,7 +33,7 @@
             <!-- slide1 -->
             <div class = "slides-track">
                 <div class = "slide-show" style = "background-image: url('img/slideshow_index/SchoolPrograms.jpg');"
-                onclick="window.location.href='';">
+                onclick="window.location.href='school_scholarship_page.php';">
                     <div class = "slide-content">
                         <h4 class = "slide-heading"> INSTITUTION </h4>
                         <h1> School Programs </h1>
@@ -44,7 +47,8 @@
                 </div>
 
                 <!-- slide2 -->
-                <div class = "slide-show" style = "background-image: url('img/slideshow_index/GovernmentPrograms.jpg');">
+                <div class = "slide-show" style = "background-image: url('img/slideshow_index/GovernmentPrograms.jpg');"
+                onclick="window.location.href='gov_scholarship_page.php';">
                     <div class = "slide-content">
                         <h4 class = "slide-heading"> GOVERNMENT </h4>
                         <h1> Government Programs </h1>
@@ -55,7 +59,8 @@
                 </div>
 
                 <!-- slide3 -->
-                <div class = "slide-show" style = "background-image: url('img/slideshow_index/PrivatePrograms.jpg');">
+                <div class = "slide-show" style = "background-image: url('img/slideshow_index/PrivatePrograms.jpg');"
+                onclick="window.location.href='priv_scholarship_page.php';">
                     <div class = "slide-content">
                         <h4 class = "slide-heading"> PRIVATE </h4>
                         <h1> Private Programs </h1>
@@ -66,7 +71,8 @@
                 </div>
 
                 <!-- slide4 -->
-                <div class = "slide-show" style = "background-image: url('img/slideshow_index/PrivatePrograms.jpg');">
+                <div class = "slide-show" style = "background-image: url('img/slideshow_index/CityPrograms.jpg');"
+                onclick="window.location.href='city_scholarship_page.php';">
                     <div class = "slide-content">
                         <h4 class = "slide-heading"> CITY </h4>
                         <h1> City Programs </h1>
@@ -76,6 +82,7 @@
                     </div>
                 </div>
             </div>
+            <button class="prev-btn" onclick="prevSlide()">&#10094;</button>
             <button class="next-btn" onclick="nextSlide()">&#10095;</button>
         </div>
 
@@ -132,6 +139,6 @@
         <!-- footer -->
         <?php require "views/footer.php"?>
         
-        <script src = "assets/index/index.js"></script> 
+        <script src = "assets/javascript/index.js"></script> 
     </body>
 </html>

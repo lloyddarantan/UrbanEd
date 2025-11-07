@@ -2,7 +2,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-        <link rel="stylesheet" href="assets/scholarship/scholarship.css">
+        <link rel="stylesheet" href="assets/css/index/scholarship/scholarship.css">
     </head>
     <body>
         <main class="page" tabindex="-1">
@@ -56,7 +56,7 @@
                     </article>
                     
                 
-                    <article class="article">
+                    <article class="article" onclick="window.location.href='city_scholarship_page.php';">
                         <figure class="pic-container">
                             <img class="art-pic" 
                                 src="img/scholarship_home_img/cityscholar.png" 
@@ -90,7 +90,7 @@
                     </article>
 
                     
-                    <article class="article">
+                    <article class="article"onclick="window.location.href='gov_scholarship_page.php';">
                         <figure class="pic-container">
                             <img class="art-pic" 
                                 src="img/scholarship_home_img/governmentscholar.png" 
@@ -109,20 +109,8 @@
                 </div>
             
                 <div class="sub-nav">
-                    <div class="sub-container">
-                        <div class="subs">
-                            <a href="school_scholarship_page.php">School Scholarship</a>
-                        </div>
-                        <div class="subs">
-                            <a href="#">City Scholarship</a>
-                        </div>
-                        <div class="subs">
-                            <a href="#">Private Scholarship</a>
-                        </div>
-                        <div class="subs">
-                            <a href="#">Government Scholarship</a>
-                        </div>
-                    </div>
+                    <!-- subnav -->
+                    <?php require "views/sub-nav.php"?>
                 </div>
             </div>
         </main>
