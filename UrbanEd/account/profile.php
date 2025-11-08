@@ -1,7 +1,7 @@
-
 <?php
 require 'database/profile_process.php';
 ?>
+
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,51 +22,61 @@ require 'database/profile_process.php';
         </div>
         <div class="grid">
 
-      <div class="card">
-  <div class="header-flex">
-    <h1>Account Details</h1>
-    <button class="edit-btn" id="editBtn">
-      <i class="fas fa-edit"></i> Edit
-    </button>
-  </div>
+          <div class="card">
+        <div class="header-flex">
+          <h1>Account Details</h1>
+          <div class="header-buttons">
+            <!-- Edit Button -->
+            <button class="edit-btn" id="editBtn">
+              <i class="fas fa-edit"></i> Edit
+            </button>
 
-    <form id="profileForm" action="database/update_profile.php" method="POST">
-      <div>
-        <label>First Name</label>
-        <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly class="input-field">
-      </div>
+            <!-- Delete Button -->
+            <form id="deleteForm" action="database/delete_process.php" method="POST" style="display:inline;">
+              <button type="submit" class="delete-btn" title="Delete Account" id="deleteBtn">
+                <i class="fas fa-trash"></i>
+              </button>
+            </form>
+          </div>
+        </div>
 
-      <div>
-        <label>Last Name</label>
-        <input type="text" name="lastname" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly class="input-field">
-      </div>
+        <form id="profileForm" action="database/update_profile.php" method="POST">
+          <div>
+            <label>First Name</label>
+            <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly class="input-field">
+          </div>
 
-      <div>
-        <label>Email</label>
-        <input type="text" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly class="input-field">
-      </div>
+          <div>
+            <label>Last Name</label>
+            <input type="text" name="lastname" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly class="input-field">
+          </div>
 
-      <div>
-        <label>Phone Number</label>
-        <input type="text" name="contactno" value="<?php echo htmlspecialchars($user['contactno']); ?>" readonly class="input-field">
-      </div>
+          <div>
+            <label>Email</label>
+            <input type="text" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly class="input-field">
+          </div>
 
-      <div>
-        <label>Date of Birth</label>
-        <input type="date" name="birthdate" value="<?php echo htmlspecialchars($user['birthdate']); ?>" readonly class="input-field">
-      </div>
+          <div>
+            <label>Phone Number</label>
+            <input type="text" name="contactno" value="<?php echo htmlspecialchars($user['contactno']); ?>" readonly class="input-field">
+          </div>
 
-      <div>
-        <label>Address</label>
-        <textarea name="address" rows="2" readonly class="input-field"><?php echo htmlspecialchars($user['address']); ?></textarea>
-      </div>
+          <div>
+            <label>Date of Birth</label>
+            <input type="date" name="birthdate" value="<?php echo htmlspecialchars($user['birthdate']); ?>" readonly class="input-field">
+          </div>
 
-      <div class="btn-container">
-        <button type="submit" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
-        <button type="button" class="btn" onclick="window.location.href='logout.php'">Sign Out</button>
+          <div>
+            <label>Address</label>
+            <textarea name="address" rows="2" readonly class="input-field"><?php echo htmlspecialchars($user['address']); ?></textarea>
+          </div>
+
+          <div class="btn-container">
+            <button type="submit" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
+            <button type="button" class="btn" onclick="window.location.href='logout.php'">Sign Out</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
 
       <div class="right-column">
         <div class="card profile-info">
