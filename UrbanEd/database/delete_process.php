@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connect.php'; // adjust path if needed
+require 'db_connect.php';
 
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
