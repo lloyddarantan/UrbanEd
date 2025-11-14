@@ -1,8 +1,8 @@
-<div class="modal-overlayDelete modal-overlay">
+<div class="modal-overlayDelete modal-overlay" id = "deleteOverlay">
   <div class="modal">
     <i class="bi bi-x-circle-fill"></i>
     <div class="icon-container">
-      <i class="bi bi-exclamation-circle-fill"></i>
+      <i class="bi bi-exclamation-circle-fill" id = "closeDelete"></i>
     </div>
 
     <h1 class="modal-title">Confirm Your Delete</h1>

@@ -76,7 +76,15 @@ require 'database/profile_process.php';
             <button type="button" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
 
 <!-- delete acc -->
-            <button type="button" class="btn" id="deleteBtn" style="display:none;">Delete Account</button>
+            <button 
+                type="button" 
+                class="btn" 
+                id="deleteBtn" 
+                style="display:none;"
+                onclick="document.getElementById('deleteOverlay').style.display = 'flex'"
+            >
+                Delete Account
+            </button>
 <!-- signout             -->
             <button type="button" class="btn" id = "signOutBtn">Sign Out </button>
           </div>
