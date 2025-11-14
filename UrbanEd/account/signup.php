@@ -65,7 +65,7 @@
 
                 <p class="login-text">
                     Already registered? 
-                    <a href="#">Sign in here</a>
+                    <a href="login_page.php">Sign in here</a>
                 </p>
             </div>
         </div>

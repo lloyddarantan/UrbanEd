@@ -7,6 +7,8 @@ require 'database/profile_process.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="assets/css/profile.css">
+        <link rel="stylesheet" href="assets/css/modals/modal.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
     </head>
     <body>
         <div class="page-feature">
@@ -26,54 +28,57 @@ require 'database/profile_process.php';
         <div class="header-flex">
           <h1>Account Details</h1>
           <div class="header-buttons">
-            <!-- Edit Button -->
+<!-- Edit Button -->
             <button class="edit-btn" id="editBtn">
               <i class="fas fa-edit"></i> Edit
             </button>
 
-            <!-- Delete Button -->
-            <form id="deleteForm" action="database/delete_process.php" method="POST" style="display:inline;">
-              <button type="submit" class="delete-btn" title="Delete Account" id="deleteBtn">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
+<!-- Delete Button -->
+            <!-- <button type="button" class="delete-btn" id="deleteBtn" title="Delete Account">
+              <i class="fas fa-trash"></i>
+            </button> -->
           </div>
         </div>
 
         <form id="profileForm" action="database/update_profile.php" method="POST">
           <div>
             <label>First Name</label>
-            <input type="text" name="firstname" value="<?php echo htmlspecialchars($user['firstname']); ?>" readonly class="input-field">
+            <input type="text" name="firstname" value="<?php echo htmlspecialchars($users['firstname']); ?>" readonly class="input-field">
           </div>
 
           <div>
             <label>Last Name</label>
-            <input type="text" name="lastname" value="<?php echo htmlspecialchars($user['lastname']); ?>" readonly class="input-field">
+            <input type="text" name="lastname" value="<?php echo htmlspecialchars($users['lastname']); ?>" readonly class="input-field">
           </div>
 
           <div>
             <label>Email</label>
-            <input type="text" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly class="input-field">
+            <input type="text" name="email" value="<?php echo htmlspecialchars($users['email']); ?>" readonly class="input-field">
           </div>
 
           <div>
             <label>Phone Number</label>
-            <input type="text" name="contactno" value="<?php echo htmlspecialchars($user['contactno']); ?>" readonly class="input-field">
+            <input type="text" name="contactno" value="<?php echo htmlspecialchars($users['contactno']); ?>" readonly class="input-field">
           </div>
 
           <div>
             <label>Date of Birth</label>
-            <input type="date" name="birthdate" value="<?php echo htmlspecialchars($user['birthdate']); ?>" readonly class="input-field">
+            <input type="date" name="birthdate" value="<?php echo htmlspecialchars($users['birthdate']); ?>" readonly class="input-field">
           </div>
 
           <div>
             <label>Address</label>
-            <textarea name="address" rows="2" readonly class="input-field"><?php echo htmlspecialchars($user['address']); ?></textarea>
+            <textarea name="address" rows="2" readonly class="input-field"><?php echo htmlspecialchars($users['address']); ?></textarea>
           </div>
 
           <div class="btn-container">
-            <button type="submit" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
-            <button type="button" class="btn" onclick="window.location.href='logout.php'">Sign Out</button>
+<!-- save changes -->
+            <button type="button" class="btn" id="saveBtn" style="display:none;">Save Changes</button>
+
+<!-- delete acc -->
+            <button type="button" class="btn" id="deleteBtn" style="display:none;">Delete Account</button>
+<!-- signout             -->
+            <button type="button" class="btn" id = "signOutBtn">Sign Out </button>
           </div>
         </form>
       </div>
@@ -82,7 +87,7 @@ require 'database/profile_process.php';
         <div class="card profile-info">
           <div class="avatar">
           </div>
-          <div class="name"><?php echo htmlspecialchars($user['firstname'] . ' ' . $user['lastname']); ?></div>
+          <div class="name"><?php echo htmlspecialchars($users['firstname'] . ' ' . $users['lastname']); ?></div>
           <div class="details">Student | ID: 123456789</div>
         </div>
 
@@ -130,6 +135,10 @@ require 'database/profile_process.php';
       </div>
     </div>
 
-    </body>
+    <?php require 'account/modals/delete.php'; ?>
+    <?php require 'account/modals/logout.php'; ?>
+    <?php require 'account/modals/update.php'; ?>
     <script src = "assets/javascript/profile.js"></script>
+    </body>
+    
 </html>

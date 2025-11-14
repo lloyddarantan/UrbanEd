@@ -1,7 +1,7 @@
 <?php
 // session_start();
 
-// Check if the user is logged in
+// Check if the users is logged in
 if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
     header("Location: login_page.php");
     exit();
@@ -19,19 +19,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get user email from session
+// Get users email from session
 $email = $_SESSION['email'];
 
-// Fetch user data
-$stmt = $conn->prepare("SELECT * FROM user WHERE email = ?");
+// Fetch users data
+$stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc();
+    $users = $result->fetch_assoc();
 } else {
-    echo "User not found.";
+    echo "users not found.";
     exit();
 }
 

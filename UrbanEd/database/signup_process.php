@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birthdate = $_POST['birthdate'] ?? '';
     $address   = $_POST['address'  ] ?? '';
 
-    $complete = $conn->prepare("INSERT INTO user (firstname, lastname, email, password, contactno, birthdate, address)
+    $complete = $conn->prepare("INSERT INTO users (firstname, lastname, email, password, contactno, birthdate, address)
                             VALUES (?, ?, ?, ?, ?, ?, ?)");
     $complete->bind_param("sssssss", $firstname, $lastname, $email, $password, $contactno, $birthdate, $address);
 

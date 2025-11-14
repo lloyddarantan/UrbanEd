@@ -5,7 +5,7 @@ require 'db_connect.php';
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
 
-    $stmt = $conn->prepare("DELETE FROM user WHERE email = ?");
+    $stmt = $conn->prepare("DELETE FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
 
     if ($stmt->execute()) {

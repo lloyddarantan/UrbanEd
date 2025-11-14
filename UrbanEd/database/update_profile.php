@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['email'])) {
     $birthdate = $_POST['birthdate'];
     $address = $_POST['address'];
 
-    $stmt = $conn->prepare("UPDATE user SET firstname=?, lastname=?, contactno=?, birthdate=?, address=? WHERE email=?");
+    $stmt = $conn->prepare("UPDATE users SET firstname=?, lastname=?, contactno=?, birthdate=?, address=? WHERE email=?");
     $stmt->bind_param("ssssss", $firstname, $lastname, $contactno, $birthdate, $address, $email);
 
     if ($stmt->execute()) {
