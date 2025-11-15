@@ -1,3 +1,21 @@
+<?php
+require 'database/db_connect.php';
+
+$sql = "SELECT id, private_company, scholarship_title, requirements, apply_link FROM priv_scholarships ORDER BY private_Company";
+$result = $conn->query($sql);
+
+$scholarships = [];
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $scholarships[] = $row;
+    }
+}
+$private = [];
+    foreach ($scholarships as $s) {
+    $private[$s['private_company']][] = $s;
+}
+?>
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,111 +60,64 @@
                                 </div>
                             </div>
                         </div>
-<!--sm -->
-                    <article class="article-schools">
-                        <figure class="pic-container">
-                            <img class="city-pic" 
-                                src="img/private_img/sm.jpg" 
-                                alt="Scholarship Opportunities">
-                        </figure>
-                        <div class="art-des">
-                            <div class="art-title">
-                                <h2>SM Foundation</h2>
-                            </div>
-                            <div class="des-art">
-                                <p>Explore available scholarships and grants from private sectors, including eligibility requirements, application procedures, and key details to guide you in starting your higher education journey.</p>
+                    <?php foreach ($private as $private_company => $scholarships): ?>
+                        <article class="article-schools">
+                            <figure class="pic-container">
+                                <?php
+                                $privFile = 'img/private_img/' . strtolower(str_replace(' ', '', $private_company));
+                                $privImg = file_exists($privFile . '.png') ? $privFile . '.png' :
+                                        (file_exists($privFile . '.jpg') ? $privFile . '.jpg' : 'img/gov_img/default.png');
+                                ?>
+                                <img class="city-pic" src="<?= $privImg ?>" alt="<?= htmlspecialchars($private_company) ?>">
+                            </figure>
 
-                                <div class="schools hidden">
+                            <div class="art-des">
+                                <div class="art-title">
+                                    <h2><?= htmlspecialchars($private_company) ?></h2>
+                                </div>
+                                <div class="des-art">
+                                    <p>Browse available scholarships from local schools inside <?= htmlspecialchars($private_company) ?>.</p>
+                                </div>
+
+                            <div class="schools hidden">
+                                <?php foreach ($scholarships as $s): ?>
                                     <div class="school">
                                         <div class="school-header">
-                                            <div class="school-details">
-                                                <h3>College Scholarship</h3>
-                                            </div>
+                                            <h3><?= htmlspecialchars($s['scholarship_title']) ?></h3>
                                             <span class="back-arrow">&#8592;</span>
                                         </div>
-                                        <div class = "hidden-details">
-                                                <div class = "scholarship">
-                                                    <div class = "scholarship-title">
-                                                        <h2>Academic Scholarship</h2>
-                                                    </div>
-                                                    <div class = scholarship-content>
-                                                        <p>Requirements:</p>
-                                                        <ul>
-                                                            <li>Accomplished online application form</li>
-                                                            <li>
-                                                                Attachments to the online application:
-                                                                <ul>
-                                                                <li>Parent’s or Guardian’s Latest Income Tax Return / Certification of Non-Filing of Income / Certificate of Indigency</li>
-                                                                <li>Latest Grade 12 report card</li>
-                                                                <li>Birth Certificate / PSA</li>
-                                                                <li>Latest 2×2 ID picture</li>
-                                                                <li>Sketch of home to the nearest SM Mall</li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="apply-btn">APPLY</button>
-                                                </div>   
-                                            </div> 
-                                    </div>
-                                </div>
-                        </div>
-                    </article>
 
-<!-- ayala -->
-                    <article class="article-schools">
-                        <figure class="pic-container">
-                            <img class="city-pic" 
-                                src="img/private_img/ayala.jpg" 
-                                alt="Scholarship Opportunities">
-                        </figure>
-                        <div class="art-des">
-                            <div class="art-title">
-                                <h2>Ayala Foundation</h2>
-                            </div>
-                            <div class="des-art">
-                                <p>Explore available scholarships and grants from private sectors, including eligibility requirements, application procedures, and key details to guide you in starting your higher education journey.</p>
-
-                                <div class="schools hidden">
-                                    <div class="school">
-                                        <div class="school-header">
-                                            <div class="school-details">
-                                                <h3>Ayala Foundation Scholarship</h3>
+                                    <div class="hidden-details">
+                                        <div class="scholarship">
+                                            <div class="scholarship-title">
+                                                <h2><?= htmlspecialchars($s['scholarship_title']) ?></h2>
                                             </div>
-                                            <span class="back-arrow">&#8592;</span>
-                                        </div>
-                                        <div class = "hidden-details">
-                                                <div class = "scholarship">
-                                                    <div class = "scholarship-title">
-                                                        <h2>U-Go Scholar</h2>
-                                                    </div>
-                                                    <div class = scholarship-content>
-                                                        <p>Requirements:</p>
-                                                        <ul>
-                                                            <li>Must be a Filipino Citizen (Female)</li>
-                                                            <li>Must be a Female</li>
-                                                            <li>They must be an incoming 1st year, 2nd Year, or 3rd Year College Student for the School Year 2024–2025</li>
-                                                            <li>Incoming 4th year students may apply in the current year</li>
-                                                            <li>The Scholarship Program is only available if you take a 5-year course</li>
-                                                            <li>Must be enrolled in a public or state university</li>
-                                                            <li>With GPA of 85% or its equivalent</li>
-                                                            <li>Without any disciplinary issue or administrative case</li>
-                                                            <li>Must be aspiring to bring positive change in society</li>
-                                                            <li>Must have proof of financial need</li>
-                                                            <li>Student Financial Aid / School supplies</li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="apply-btn">APPLY</button>
-                                                </div>   
-                                            </div> 
-                                    </div>
-                                </div>
-                        </div>
-                    </article>
 
+                                            <div class="scholarship-content">
+                                                <p>Requirements:</p>
+                                                    <ul>
+                                                        <?php 
+                                                        $reqs = explode(';', $s['requirements']);
+                                                        foreach ($reqs as $req): ?>
+                                                            <li><?= htmlspecialchars(trim($req)) ?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </div>
+
+                                                    <?php if (!empty($s['apply_link'])): ?>
+                                                    <a href="<?= htmlspecialchars($s['apply_link']) ?>" target="_blank">
+                                                        <button class="apply-btn">APPLY</button>
+                                                    </a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                        </article>
+                    <?php endforeach; ?>
                     </div>
                 </div>
-            
                 <div class="sub-nav">
                     <!-- subnav -->
                     <?php require "views/sub-nav.php"?>

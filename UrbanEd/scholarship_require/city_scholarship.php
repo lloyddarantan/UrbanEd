@@ -15,7 +15,6 @@ $cities = [];
     foreach ($scholarships as $s) {
     $cities[$s['city']][] = $s;
 }
-  
 ?>
 <!DOCTYPE html>
     <head>
@@ -61,6 +60,7 @@ $cities = [];
                                 </div>
                             </div>
                         </div>
+
                     <?php foreach ($cities as $city => $scholarships): ?>
                         <article class="article-schools">
                             <figure class="pic-container">
@@ -117,6 +117,8 @@ $cities = [];
                                 </div>
                         </article>
                     <?php endforeach; ?>
+                    </div>
+                </div>
                 <div class="sub-nav">
                     <!-- subnav -->
                     <?php require "views/sub-nav.php"?>

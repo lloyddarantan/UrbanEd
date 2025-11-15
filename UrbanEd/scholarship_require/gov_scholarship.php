@@ -1,4 +1,23 @@
+<?php
+require 'database/db_connect.php';
+
+$sql = "SELECT id, government, scholarship_title, requirements, apply_link FROM gov_scholarships ORDER BY government";
+$result = $conn->query($sql);
+
+$scholarships = [];
+
+if ($result && $result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $scholarships[] = $row;
+    }
+}
+$governments = [];
+    foreach ($scholarships as $s) {
+    $governments[$s['government']][] = $s;
+}
+?>
 <!DOCTYPE html>
+
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -42,167 +61,65 @@
                                 </div>
                             </div>
                         </div>
-<!-- schools in bacolod -->
-                    <article class="article-schools">
-                        <figure class="pic-container">
-                            <img class="city-pic" 
-                                src="img/gov_img/ched.png" 
-                                alt="Scholarship Opportunities">
-                        </figure>
-                        <div class="art-des">
-                            <div class="art-title">
-                                <h2>Commission on Higher Education</h2>
-                            </div>
-                            <div class="des-art">
-                                <p>Explore available CHED scholarships and grants, including eligibility requirements, application procedures, and key details to guide you in starting your higher education journey.</p>
 
-                                <div class="schools hidden">
+                    <?php foreach ($governments as $government => $scholarships): ?>
+                        <article class="article-schools">
+                            <figure class="pic-container">
+                                <?php
+                                $govFile = 'img/gov_img/' . strtolower(str_replace(' ', '', $government));
+                                $govImg = file_exists($govFile . '.png') ? $govFile . '.png' :
+                                        (file_exists($govFile . '.jpg') ? $govFile . '.jpg' : 'img/gov_img/default.png');
+                                ?>
+                                <img class="city-pic" src="<?= $govImg ?>" alt="<?= htmlspecialchars($government) ?>">
+                            </figure>
+
+                            <div class="art-des">
+                                <div class="art-title">
+                                    <h2><?= htmlspecialchars($government) ?></h2>
+                                </div>
+                                <div class="des-art">
+                                    <p>Browse available scholarships from local schools inside <?= htmlspecialchars($government) ?>.</p>
+                                </div>
+
+                            <div class="schools hidden">
+                                <?php foreach ($scholarships as $s): ?>
                                     <div class="school">
                                         <div class="school-header">
-                                            <div class="school-details">
-                                                <h3>Academic Scholarship</h3>
-                                            </div>
+                                            <h3><?= htmlspecialchars($s['scholarship_title']) ?></h3>
                                             <span class="back-arrow">&#8592;</span>
                                         </div>
-                                        <div class = "hidden-details">
-                                                <div class = "scholarship">
-                                                    <div class = "scholarship-title">
-                                                        <h2>Tertiary Education Subsidy</h2>
-                                                    </div>
-                                                    <div class = scholarship-content>
-                                                        <p>For New Applicants:</p>
-                                                        <ul>
-                                                            <li>Certified list of enrolled student-applicants with COR/COE as proof of enrollment and fees.</li>
-                                                            <li>Certified list of PWD student-applicants with PWD ID</li>
-                                                            <li>Certificate of Residency from the Barangay</li>
-                                                            <li>Proof of household income</li>
-                                                        </ul>
-                                                        <p>For Continuing Grantees:</p>
-                                                        <ul>
-                                                            <li>Certified list of continuing grantees with COR/COE as proof of enrollment and fees</li>
-                                                            <li>For those returning after LOA (Leave of Absence): certified list with units enrolled + proof that transferee is a grantee.</li>
-                                                        </ul>
-                                                        <p>For Availment of TES 3B:</p>
-                                                        <ul>
-                                                            <li>Letter of Availment addressed to CHED Regional Office (summary of allowable expenses + official receipts).</li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="apply-btn">APPLY</button>
-                                                </div>   
-                                            </div>
-                                            
-                                    </div>
-                                </div>
-                        </div>
-                    </article>
 
-<!-- dost -->
-                    <article class="article-schools">
-                        <figure class="pic-container">
-                            <img class="city-pic" 
-                                src="img/gov_img/dost.png" 
-                                alt="Scholarship Opportunities">
-                        </figure>
-                        <div class="art-des">
-                            <div class="art-title">
-                                <h2>Department of Science and <br> Technology</h2>
-                            </div>
-                            <div class="des-art">
-                                <p>Explore available DOST scholarships and grants, including eligibility requirements, application procedures, and key details to guide you in starting your higher education journey.</p>
-
-                                <div class="schools hidden">
-                                    <div class="school">
-                                        <div class="school-header">
-                                            <div class="school-details">
-                                                <h3>S&T Undergraduate Program</h3>
+                                    <div class="hidden-details">
+                                        <div class="scholarship">
+                                            <div class="scholarship-title">
+                                                <h2><?= htmlspecialchars($s['scholarship_title']) ?></h2>
                                             </div>
-                                            <span class="back-arrow">&#8592;</span>
+
+                                            <div class="scholarship-content">
+                                                <p>Requirements:</p>
+                                                    <ul>
+                                                        <?php 
+                                                        $reqs = explode(';', $s['requirements']);
+                                                        foreach ($reqs as $req): ?>
+                                                            <li><?= htmlspecialchars(trim($req)) ?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                </div>
+
+                                                    <?php if (!empty($s['apply_link'])): ?>
+                                                    <a href="<?= htmlspecialchars($s['apply_link']) ?>" target="_blank">
+                                                        <button class="apply-btn">APPLY</button>
+                                                    </a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
                                         </div>
-                                            <div class = "hidden-details">
-                                                <div class = "scholarship">
-                                                    <div class = "scholarship-title">
-                                                        <h2>Academic Scholarship</h2>
-                                                    </div>
-                                                    <div class = scholarship-content>
-                                                        <p>Requirements:</p>
-                                                        <ul>
-                                                            <li>Personal Information (Form A)</li>
-                                                            <li>Household Information Questionnaire (Form B)</li>
-                                                            <li>Certificate of Good Moral (Form C)</li>
-                                                            <li>Certificate of Good Health (Form D)</li>
-                                                            <li>Principal’s Certification (Form E)</li>
-                                                            <li>Certificate of Residency (Form F)</li>
-                                                            <li>Parent’s Certification – Applicant has no pending immigration application to another country (Form G)</li>
-                                                            <li>DOST-SEI Scholarship Examination/Award (Form H)</li>
-                                                            <li>Applicant’s Certification of No Post-Secondary Units (Form I)</li>
-                                                            <li>Signed Declaration of Applicant and the Parent/Legal Guardian (Form J)</li>
-                                                            <li>Recent Picture</li>
-                                                            <li>Birth Certificate</li>
-                                                            <li>Parent/s or Legal Guardian’s or Spouse’s 2022 Income Tax Return</li>
-                                                            <li>Notarized Affidavit of Guardianship</li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="apply-btn">APPLY</button>
-                                                </div>   
-                                            </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
-                        </div>
-                    </article>
-<!-- owwa                                     -->
-                    <article class="article-schools">
-                        <figure class="pic-container">
-                            <img class="city-pic" 
-                                src="img/gov_img/owwa.png" 
-                                alt="Scholarship Opportunities">
-                        </figure>
-                        <div class="art-des">
-                            <div class="art-title">
-                                <h2>Overseas Worker <br> Welfare Administration</h2>
-                            </div>
-                            <div class="des-art">
-                                <p>Explore available OWWA scholarships and grants, including eligibility requirements, application procedures, and key details to guide you in starting your higher education journey.</p>
-
-                                <div class="schools hidden">
-                                    <div class="school">
-                                        <div class="school-header">
-                                            <div class="school-details">
-                                                <h3>Academic Scholarship</h3>
-                                            </div>
-                                            <span class="back-arrow">&#8592;</span>
-                                        </div>
-                                            <div class = "hidden-details">
-                                                <div class = "scholarship">
-                                                    <div class = "scholarship-title">
-                                                        <h2>Academic Scholarship</h2>
-                                                    </div>
-                                                    <div class = scholarship-content>
-                                                        <p>Requirements:</p>
-                                                        <ul>
-                                                            <li>Must be an active OWWA member or a beneficiary of an active OWWA member</li>
-                                                            <li>Must pass the TESDA qualifying examination or Multiple Aptitude Battery Test</li>
-                                                            <li>Have at least one (1) recorded membership contribution</li>
-                                                            <li>Child not older than 21 years old or spouse of a married OFW</li>
-                                                            <li>Brother/Sister not older than 21 years old of an unmarried OFW</li>
-                                                            <li>Accomplished application forms (2 sets)</li>
-                                                            <li>1”x1” ID pictures (2 copies)</li>
-                                                            <li>Form 137 / HS report card</li>
-                                                            <li>Proof of OWWA membership</li>
-                                                            <li>Photocopy of OFW passport</li>
-                                                            <li>High school or College diploma</li>
-                                                        </ul>
-                                                    </div>
-                                                    <button class="apply-btn">APPLY</button>
-                                                </div>   
-                                            </div>
-                                    </div>
-                                </div>
-                        </div>
-                    </article>
-
+                        </article>
+                    <?php endforeach; ?>
                     </div>
                 </div>
-            
                 <div class="sub-nav">
                     <!-- subnav -->
                     <?php require "views/sub-nav.php"?>
