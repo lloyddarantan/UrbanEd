@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db_connect.php'; // use your existing DB connection file
+require 'db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['email'])) {
     $email = $_SESSION['email'];

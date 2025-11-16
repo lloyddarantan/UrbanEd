@@ -170,10 +170,7 @@
   text-align: center;
 }
 
-/* ————————————————
-1024px (tablet / small laptop)
-——————————————— */
-/* Tablet: 1024px and below */
+
 @media (max-width: 1024px) {
   .in-header, .lastquote-content {
     font-size: 32px;
@@ -189,9 +186,7 @@
   }
 }
 
-/* ————————————————
-768px (mobile view)
-——————————————— */
+
 
 @media (max-width: 768px) {
   .title {

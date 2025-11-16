@@ -1,9 +1,9 @@
-/* ---------- Base Styles ---------- */
+
 * {
   box-sizing: border-box;
 }
 
-/* from the schoalrship css */
+
 .page-header {
   margin-left: 112px;
   margin-right: 112px;
@@ -124,7 +124,6 @@ h1, h2 {
         color: #c0392b;
       }
 
-/* ---------- Layout ---------- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -150,7 +149,6 @@ nav {
   }
 }
 
-/* ---------- Card Styles ---------- */
 .card {
   background-color: white;
   border: 1px solid #e5e7eb;
@@ -167,7 +165,6 @@ nav {
   color: #1f2937;
 }
 
-/* ---------- Input Styles ---------- */
 label {
   font-size: 0.9rem;
   font-weight: 500;
@@ -197,7 +194,6 @@ textarea {
   resize: none;
 }
 
-/* ---------- Button ---------- */
 .btn-container {
   margin-top: 16px;
 }
@@ -223,7 +219,6 @@ textarea {
   transform: scale(0.98);
 }
 
-/* ---------- Avatar Section ---------- */
 .avatar {
   width: 150px;
   height: 150px;
@@ -256,7 +251,6 @@ textarea {
   color: #6b7280;
 }
 
-/* ---------- Status Lists ---------- */
 dl {
   margin: 0;
 }

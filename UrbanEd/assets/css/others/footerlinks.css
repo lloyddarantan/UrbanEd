@@ -10,32 +10,31 @@ body, html {
   font-family: sans-serif;
 }
 
-/* Royal Blue Line */
 .blue-line {
-  background-color: rgb(28, 52, 124); /* Yale blue tone */
+  background-color: rgb(28, 52, 124);
   height: 100px;
   width: 100%;
   display: flex;
-  align-items: center; /* vertically center text */
-  padding-left: 40px;  /* space from the left side */
+  align-items: center;
+  padding-left: 40px;
   box-sizing: border-box;
 }
 
 .blue-line h1 {
-  color: #f8f8f8; /* soft white for sophistication */
+  color: #f8f8f8;
   font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
-  font-size: 30px; /* slightly smaller for balance */
-  font-weight: 300; /* thinner text for elegance */
-  letter-spacing: 3px; /* increased spacing for a refined, airy feel */
+  font-size: 30px; 
+  font-weight: 300;
+  letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* subtle depth, not overpowering */
-  border-left: 4px solid #d4af37; /* rich gold accent */
-  padding-left: 15px; /* space between gold line and text */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-left: 4px solid #d4af37;
+  padding-left: 15px;
 }
 
 
-/* Page Layout */
+
 main.page {
   margin-left: 0;
   margin-right: 0;
@@ -46,7 +45,7 @@ main.page {
   overflow: hidden;
 }
 
-/* Header Navigation */
+
 .page-header {
   margin-left: 0px;
   margin-right: 112px;
@@ -80,7 +79,7 @@ main.page {
   color: #63aaff;
 }
 
-/* Divider Line */
+
 .page-feature {
   width: 100%;
   padding: 0 60px;
@@ -89,7 +88,6 @@ main.page {
 }
 
 
-/* Page Structure */
 .page-row {
   display: flex;
   gap: 40px;
@@ -108,7 +106,6 @@ main.page {
   margin-right: 5px;
 }
 
-/* Typography & Text Styles */
 .typography {
   font-size: 25px;
   line-height: 1.6;
@@ -153,7 +150,6 @@ main.page {
   margin-bottom: 0.5rem;
 }
 
-/* Section Articles */
 .ceo {
   display: flex;
   flex-direction: column;
@@ -177,9 +173,8 @@ main.page {
   font-weight: 300;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
-  /* Reduce side margins to fit smaller screens */
   .page-header,
   .page-row,
   .nav-header {
@@ -227,7 +222,7 @@ main.page {
 
   .nav-header {
     font-size: 12px;
-    text-align: left; /* ensure nav text stays left-aligned */
+    text-align: left;
   }
 
 }
@@ -235,25 +230,24 @@ main.page {
 @media (max-width: 480px) {
   .ceo {
     flex-direction: column;
-    align-items: flex-start; /* change from center to left */
-    text-align: left;        /* align text to left */
+    align-items: flex-start; 
+    text-align: left;       
   }
 
   .typography {
     font-size: 20px;
-    text-align: left;        /* ensure headings/paragraphs align left */
+    text-align: left;       
   }
 
   .des-ceo {
     font-size: 0.95rem;
-    text-align: left;        /* left-align lists and descriptions */
+    text-align: left;       
   }
 
   .ceo-name h2 {
     font-size: 1.2rem;
     white-space: normal;
-    text-align: left;        /* ensure titles align left */
-  }
+    text-align: left;        
 
   .page-row {
     margin: 0 20px;
@@ -282,4 +276,5 @@ main.page {
       font-size: 18px;
     }
   }
+}
 

@@ -10,7 +10,7 @@ body {
 }
 
 
-/* Navigation container */
+
 .nav {
     display: flex;
     justify-content: space-around;
@@ -18,7 +18,7 @@ body {
     padding-bottom: 20px;
 }
 
-/* Logo on the left */
+
 .nav-left .nav-logo {
     height: 100px;
     width: auto;
@@ -28,7 +28,7 @@ body {
 
 }
 
-/* Right side of navigation */
+
 .nav-right {
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@ body {
   transition: 0.4s;
 }
 
-/* Animation when open */
+
 .burger.open span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 6px);
 }
@@ -128,7 +128,7 @@ body {
   z-index: 500;
 }
 
-/* Show overlay */
+
 .overlay.show {
   display: block;
 }
@@ -140,7 +140,6 @@ body {
     position: relative;
   }
 
-  /* Logo scales down */
   .nav-left .nav-logo {
     height: 60px;
     margin: 0;
@@ -149,11 +148,10 @@ body {
     margin-left: 40px;
   }
 
-  /* Hide the right-side nav by default */
   .nav-right {
     position: fixed;
     top: 0;
-    right: -250px; /* hidden off screen */
+    right: -250px;
     height: 100vh;
     width: 200px;
     background: #fff;
@@ -162,13 +160,13 @@ body {
     padding: 40px 20px;
     box-shadow: -2px 0 6px rgba(0,0,0,0.15);
     z-index: 1000;
-    gap: 20px; /* bigger gaps for aesthetics */
+    gap: 20px;
     transition: right 0.3s ease-in-out;
     overflow-y: auto;
   }
 
   .nav-right.active {
-    right: 0; /* Show when toggled */
+    right: 0;
     padding-top: 30px;
   }
 
@@ -181,7 +179,7 @@ body {
   }
 
   .nav-upper li::after {
-    content: none; /* Remove dash separators */
+    content: none;
   }
 
   .nav-links {

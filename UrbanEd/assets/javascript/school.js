@@ -19,17 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
   schools.forEach((school) => {
     const backArrow = school.querySelector(".back-arrow");
 
-    // expand
     school.addEventListener("click", function (e) {
       if (e.target.classList.contains("back-arrow")) return;
 
-      // hide school
       schools.forEach((s) => {
         s.classList.remove("active");   
         s.style.display = "none";    
       });
 
-      // show the clicked school
       school.style.display = "block";
       school.classList.add("active");
     });
@@ -39,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation(); 
       school.classList.remove("active");
 
-      // Show all schools again
       schools.forEach((s) => {
         s.style.display = "block";
       });

@@ -18,7 +18,7 @@ body {
   padding-top: 40px;
   padding-left: 60px;
   padding-right: 60px;
-  margin: 0;  /* remove unwanted browser margins */
+  margin: 0;
   box-sizing: border-box;
 }
 
@@ -118,7 +118,7 @@ body {
 
 .slide-show {
   flex: 0 0 auto;
-  width: 45%;      /* 2 per row on desktop */
+  width: 45%;
   height: 250px;
   background-size: cover;
   background-position: center;
@@ -222,7 +222,6 @@ body {
         font-weight: 400;
     }
 
-/*DATE*/
     .date {
         color: #4a4a4a;
         font-size: .875rem;
@@ -262,7 +261,7 @@ body {
         margin: 0 0 8px 0;
     }
 
-/*EXPLORE MORE NEWS*/
+
 
     form {
         margin: 0 0 20px 0;
@@ -366,7 +365,7 @@ body {
   /* media queries */
   @media (max-width: 1200px) {
   .hero-text{
-    flex: 1;   /* force equal space */
+    flex: 1; 
     max-width: 50%; 
   }
   .hero img {
@@ -390,7 +389,7 @@ body {
     padding: 20px;
   }
   .hero-text h1 {
-    font-size: 1.8rem;   /* shrink heading size for smaller screens */
+    font-size: 1.8rem;
   }
 
   .hero img {
@@ -398,17 +397,17 @@ body {
   }
 
   .hero-image-container {
-    display: none; /* Hide image on tablets & below */
+    display: none;
   }
 
   .slideshow-container {
-    display: block;        /* ✅ Keep slideshow as block (not flex column) */
-    overflow: hidden;      /* ✅ Hide extra slides */
+    display: block;        
+    overflow: hidden;    
     position: relative;
   }
 
   .slide-show {
-    width: 100%;           /* ✅ Each slide takes full width */
+    width: 100%;        
   }
 
   .margin {
@@ -445,7 +444,7 @@ body {
     max-width: 100%;
     width: 100%;
     padding: 20px 15px;
-    min-height: auto; /* ✅ Prevents fixed height issues */
+    min-height: auto;
   }
 
   .hero-text h1 {
@@ -462,12 +461,12 @@ body {
     padding: 12px 18px;
   }
 
-  /* Hide hero image completely */
+
   .hero-image-container {
     display: none;
   }
 
-  /* Slideshow: only one per row */
+
   .slideshow-container {
     flex-direction: column;
     gap: 15px;
@@ -478,7 +477,7 @@ body {
     flex: 1 0 100%;
     width: 100%;
     height: auto;
-    min-height: 220px; /* ✅ keeps slide readable */
+    min-height: 220px;
   }
 
   .slide-content {
@@ -497,7 +496,7 @@ body {
   /* News section */
   .margin {
     margin: 10px;
-    padding: 20px;  /* ✅ enough padding but fits small screens */
+    padding: 20px;  
   }
 
   .news-layout {

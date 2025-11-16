@@ -61,10 +61,10 @@ body {
   margin-right: 8px;
 }
 
-.green { background-color: #16a34a; }     /* Operational */
-.yellow { background-color: #facc15; }    /* Partially available */
-.red { background-color: #dc2626; }       /* Outage */
-.blue { background-color: #3b82f6; }      /* Maintenance */
+.green { background-color: #16a34a; }     
+.yellow { background-color: #facc15; }   
+.red { background-color: #dc2626; }       
+.blue { background-color: #3b82f6; }    
 
 @media (max-width: 600px) {
   .status-board {
@@ -106,6 +106,6 @@ body {
 
   .status-table th:nth-child(3),
   .status-table td:nth-child(3) {
-    display: none; /* Keep it clean for small screens */
+    display: none; 
   }
 }
