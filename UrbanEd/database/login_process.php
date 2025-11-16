@@ -2,12 +2,8 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "ubraned";
+    $conn = new mysqli("localhost", "root", "", "ubraned");
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -20,23 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $users = $result->fetch_assoc();
-
-        if ($password === $users['password']) {
-            $_SESSION['login'] = true;
-            $_SESSION['email'] = $users['email'];
-            $_SESSION['firstname'] = $users['firstname'];
-            $_SESSION['lastname'] = $users['lastname'];
-            header("Location: ../profile_page.php");
-        } else {
-            echo "Invalid password.";
-        }
-    } else {
-        echo "Email not found.";
+    if ($result->num_rows === 0) {
+        echo "Email not found";
+        exit;
     }
 
-    $stmt->close();
-    $conn->close();
-}
+    $users = $result->fetch_assoc();
+
+    if ($password !== $users['password']) {
+        echo "Invalid password";
+        exit;
+    }
+
+    $_SESSION['login'] = true;
+    $_SESSION['email'] = $users['email'];
+    $_SESSION['firstname'] = $users['firstname'];
+    $_SESSION['lastname'] = $users['lastname'];
+
+    echo "success";
+} // <-- close the if block
 ?>

@@ -1,3 +1,4 @@
+<base href="http://localhost/UrbanEd/UrbanEd/">
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 
 <body>
     <!-- nav -->
-  <?php require "views/navigation.php"?>
+<?php require "../navigation.php"?>
 
   <main class="page" tabindex="-1">
 
@@ -99,6 +100,6 @@
   </main>
 
   <!-- footer -->
-  <?php require "views/footer.php"?>
+  <?php require "../footer.php"?>
 </body>
 </html>

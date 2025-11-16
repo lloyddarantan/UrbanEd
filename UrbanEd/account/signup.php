@@ -10,8 +10,8 @@
         
         <div class="left-pane">
             <div class="logo-circle">
+                <img src = "img/UrbanEdLogo.png">
             </div>
-            <h1 class="portal-title">UrbanEd</h1>
             <p class="portal-desc">
                 Create your account to access your personalized academic and financial profile.
             </p>

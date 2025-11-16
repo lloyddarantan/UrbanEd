@@ -1,3 +1,4 @@
+<base href="http://localhost/UrbanEd/UrbanEd/">
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,6 +130,6 @@
   </main>
 
   <!-- footer -->
-  <?php require "views/footer.php"?>
+  <?php require "../footer.php"?>
 </body>
 </html>

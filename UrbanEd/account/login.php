@@ -9,8 +9,8 @@
         
         <div class="left-pane">
             <div class="logo-circle">
+                <img src = "img/UrbanEdLogo.png">
             </div>
-            <h1 class="portal-title">UrbanEd</h1>
             <p class="portal-desc">
                 Log in your account to access your personalized academic and financial profile.
             </p>
@@ -21,7 +21,7 @@
                 <h2 class="form-title">Log in</h2>
                 <p class="form-subtitle">Log in your UrbanEd account</p>
 
-                <form action = "database/login_process.php" method = "POST">
+                <form id="loginForm" method="POST">
                     <div class="form-grid">
 
                         <div class="form-group full-width">
@@ -46,5 +46,6 @@
             </div>
         </div>
     </div>
+    <script src = "assets/javascript/login.js"></script>
     </body>
 </html>

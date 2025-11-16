@@ -1,13 +1,22 @@
 /* Global settings */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: auto; /* FIX: allow vertical scrolling */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f9fafb;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-x: hidden; /* FIX: prevent horizontal overflow */
 }
 
 /* Main container */
@@ -19,18 +28,22 @@ body {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
+    padding: 1.5rem;
+    margin: 0 auto;
+    overflow: visible;
+    box-sizing: border-box;
 }
 
-/* Left pane (hidden on small screens) */
+/* Left pane */
 .left-pane {
     display: none;
 }
 
+/* Desktop (1024px+) */
 @media (min-width: 1024px) {
     .container {
         grid-template-columns: 2fr 3fr;
-        min-height: calc(100vh - 4rem);
+        padding: 0;
     }
 
     .left-pane {
@@ -38,36 +51,37 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
-        background-color: #1e40af; /* brand-primary */
+        padding: 3rem;
+        background-color: #1e40af;
         color: white;
         text-align: center;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+    .right-pane {
+        padding: 3rem;
     }
 
     .logo-circle {
-        background-color: #3b82f6; /* brand-accent */
-        padding: 1rem;
+        background-color: #f9fafb;
+        padding: 1.5rem;
         border-radius: 50%;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        position: relative;
     }
 
-    .logo {
-        width: 64px;
-        height: 64px;
-    }
-
-    .portal-title {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        margin-bottom: 0.5rem;
+    .logo-circle img {
+        width: 90%;
+        height: 90%;
+        object-fit: cover;   /* keeps the image inside without distortion */
     }
 
     .portal-desc {
         color: #d1d5db;
-        max-width: 280px;
-        font-size: 0.95rem;
+        max-width: 300px;
+        font-size: 1rem;
     }
 }
 
@@ -84,6 +98,7 @@ body {
     max-width: 480px;
 }
 
+/* Titles */
 .form-title {
     font-size: 1.8rem;
     font-weight: 700;
@@ -93,28 +108,29 @@ body {
 
 .form-subtitle {
     color: #6b7280;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
 }
 
 /* Form grid */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.1rem;
 }
 
+/* Tablet layout (768px+) */
 @media (min-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
-
     .full-width {
         grid-column: span 2;
     }
 }
 
-/* Form fields */
+/* Fields */
 label {
     display: block;
     font-size: 0.9rem;
@@ -123,23 +139,25 @@ label {
     margin-bottom: 0.3rem;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.9rem;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     font-size: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     transition: 0.2s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border-color: #3b82f6;
     outline: none;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
 }
 
-/* Button */
+/* Submit */
 .submit-btn {
     width: 100%;
     padding: 0.9rem 1.5rem;
@@ -150,8 +168,8 @@ input:focus, textarea:focus {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 1.25rem;
     transition: 0.2s ease;
 }
 
@@ -164,9 +182,9 @@ input:focus, textarea:focus {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
 }
 
-/* Sign-in link */
+/* Sign in text */
 .login-text {
-    margin-top: 1.5rem;
+    margin-top: 1.25rem;
     text-align: center;
     font-size: 0.9rem;
     color: #4b5563;
@@ -180,4 +198,70 @@ input:focus, textarea:focus {
 
 .login-text a:hover {
     color: #1e40af;
+}
+
+/* --- Mobile Fixes (max-width: 767px) --- */
+@media (max-width: 767px) {
+    body {
+        padding: 1rem; /* Fit entire UI on screen */
+    }
+
+    .container {
+        padding: 1rem;
+        margin: 0.5rem auto;
+        width: 100%;
+    }
+
+    .right-pane {
+        padding: 1rem 0;
+    }
+
+    .form-container {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .form-title {
+        font-size: 1.4rem; /* Smaller for mobile */
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Force 1 column */
+        gap: 0.8rem;
+    }
+
+    input,
+    textarea {
+        width: 90%;
+        font-size: 0.95rem; /* Slightly smaller */
+    }
+
+    .submit-btn {
+        width: 90%;
+        font-size: 0.95rem;
+    }
+}
+
+/* Extra Small Mobile (max-width: 479px) */
+@media (max-width: 479px) {
+    .container {
+        padding: 0.7rem;
+        margin: 0.4rem;
+        border-radius: 8px;
+    }
+
+    .form-title {
+        font-size: 1.25rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.85rem; /* Even smaller for very small screens */
+    }
+
+    .submit-btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
 }
