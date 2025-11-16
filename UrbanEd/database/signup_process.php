@@ -1,46 +1,50 @@
 <?php
 session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // Database connection
-    $servername = "localhost";
-    $username = "root";  
-    $password = "";      
-    $dbname = "ubraned"; 
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
+    $conn = new mysqli("localhost", "root", "", "ubraned");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     $firstname = $_POST['firstname'] ?? '';
-    $lastname  = $_POST['lastname' ] ?? '';
-    $email     = $_POST['email'    ] ?? '';
-    $password  = $_POST['password' ] ?? '';
+    $lastname  = $_POST['lastname'] ?? '';
+    $email     = $_POST['email'] ?? '';
+    $password  = $_POST['password'] ?? '';
     $contactno = $_POST['contactno'] ?? '';
     $birthdate = $_POST['birthdate'] ?? '';
-    $address   = $_POST['address'  ] ?? '';
+    $address   = $_POST['address'] ?? '';
 
-    $complete = $conn->prepare("INSERT INTO users (firstname, lastname, email, password, contactno, birthdate, address)
-                            VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $complete->bind_param("sssssss", $firstname, $lastname, $email, $password, $contactno, $birthdate, $address);
+    // Check if email already exists
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($complete->execute()) {
-        // $_SESSION['login'] = true;
-        // $last_id = $conn-> id;
-
-       header("Location: ../login_page.php");
-       exit();
-    } else {
-         $_SESSION['login'] = false;
-        echo "Error: " . $complete;
+    if ($result->num_rows > 0) {
+        echo "Email already exists";
+        exit;
     }
 
-    $complete->close();
-    $conn->close();
+    // Hash the password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+    // Insert new user
+    $insert = $conn->prepare("INSERT INTO users (firstname, lastname, email, password, contactno, birthdate, address) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $insert->bind_param("sssssss", $firstname, $lastname, $email, $hashedPassword, $contactno, $birthdate, $address);
+
+    if ($insert->execute()) {
+        echo "Account created successfully";
+        exit;
+    } else {
+        echo "Error creating account";
+        exit;
+    }
+
+    $stmt->close();
+    $insert->close();
+    $conn->close();
 } else {
-    echo "Form not submitted correctly.";
+    echo "Form not submitted correctly";
 }
 ?>

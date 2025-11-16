@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +21,7 @@
                 <h2 class="form-title">Registration Details</h2>
                 <p class="form-subtitle">All fields are required for initial verification.</p>
 
-                <form action = "database/signup_process.php" method = "POST">
+                <form id="signupForm" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="first-name">First Name</label>
@@ -70,5 +69,6 @@
             </div>
         </div>
     </div>
+    <script src = "assets/javascript/signup.js"></script>
     </body>
 </html>
