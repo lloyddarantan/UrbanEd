@@ -1,0 +1,65 @@
+.in-header {
+  font-size: 45px;
+  line-height: 1.5;
+  font-family: yale, TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;
+  font-weight: 400;
+  color: midnightblue;
+  margin: 0 0 -20px;
+}
+
+.statementspp {
+  font-size: 20px;
+}
+
+.statementspp2 {
+  font-size: 22px;
+  color: midnightblue;
+}
+
+/* Apply same styling to list text under statements */
+.statementspp ul,
+.statementspp2 ul {
+  font-size: 18px;
+  margin-left: 25px;
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* For tablets and small laptops */
+@media (max-width: 1024px) {
+  .in-header {
+    font-size: 35px;
+  }
+
+  .statementspp {
+    font-size: 18px;
+  }
+
+  .statementspp2 {
+    font-size: 19px;
+  }
+
+ ul {
+    font-size: 15px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 600px) {
+  .in-header {
+    font-size: 28px;
+  }
+
+  .statementspp {
+    font-size: 16px;
+  }
+
+  .statementspp2 {
+    font-size: 17px;
+  }
+
+  
+  ul {
+    font-size: 15px;
+  }
+}

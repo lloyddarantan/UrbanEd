@@ -16,15 +16,15 @@
           <nav class="helpful-links">
             <h2 class="footer-header">Helpful Links</h2>
             <div class="helpful-links">
-              <a class="links" href="#">Contact Us</a>
-              <a class="links" href="#">Program Info</a>
-              <a class="links" href="#">Careers</a>
-              <a class="links" href="#">Emergency Info</a>
-              <a class="links" href="#">Privacy Policy</a>
-              <a class="links" href="#">Website Safety</a>
-              <a class="links" href="#">Accessibility</a>
-              <a class="links" href="#">Apply</a>
-              <a class="links" href="#">UrbanEd Status board</a>
+              <a class="links" href="views/others/contactus.php">Contact Us</a>
+              <a class="links" href="views/others/programinfo.php">Program Info</a>
+              <a class="links" href="views/others/careers.php">Careers</a>
+              <a class="links" href="views/others/emergencyinfo.php">Emergency Info</a>
+              <a class="links" href="views/others/privacypolicy.php">Privacy Policy</a>
+              <a class="links" href="views/others/websitesafety.php">Website Safety</a>
+              <a class="links" href="views/others/accessibility.php">Accessibility</a>
+              <a class="links" href="">Apply</a>
+              <a class="links" href="views/others/statusboard.php">UrbanEd Status board</a>
             </div>
           </nav> 
         </div>

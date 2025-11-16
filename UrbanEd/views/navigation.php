@@ -28,8 +28,8 @@ session_start();
                 <ul class="nav-links">
                     <li><a href="about_us.php">About UrbanEd</a></li>
                     <li><a href="scholarship_homepage.php">Scholarship</a></li>
-                    <li><a href="profile_page.php">Admissions</a></li>
-                    <li><a href="#">Testimonies</a></li>
+                    <li><a href="#">Admissions</a></li>
+                    <li><a href="testimonies.php">Testimonies</a></li>
                     <li><?php
                         if(isset($_SESSION['login'] ) && $_SESSION['login'] === true)
                         {
